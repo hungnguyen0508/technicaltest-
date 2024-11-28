@@ -128,3 +128,15 @@ RFM AS (
         END AS M
     FROM customer_statistics
 )
+select 
+    customer_name, 
+    monetary_in_currency,
+    concat(R,F,M) as Segmentation,
+    case 
+        when concat(R,F,M) in (444,334,434,344) then 'Khách hàng VIP'
+        when concat(R,F,M) in (333,433,343,443) then 'Khách hàng trung thành'
+        when concat(R,F,M) in (423,323,313,413) then 'Khách hàng tiềm năng'
+        when concat(R,F,M) in (133,143,134,144) then 'Khách hàng sắp rời bỏ'
+        else 'Vãng Lai'
+    end as Customer_Type
+from RFM;
